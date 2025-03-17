@@ -1,3 +1,15 @@
+# Products App
+
+Este proyecto es una aplicación de microservicios para la gestión de productos. A continuación, se detallan las instrucciones para configurar, construir y ejecutar la aplicación.
+
+
+## Dev
+1. clonar repositorio
+2. crear los ".env" basados en los ".env.tamplates"
+3. ejecutar el comando `git submodule update --init --recursive` para traer los módulos recursvamente
+4. Ejecutr el comando `docker compose up --build` para reconstruir los módulos
+
+
 ### Pasos para crear los Git Submodules
 
 
@@ -32,24 +44,4 @@ Si se hace al revés, se perderán las referencias de los sub-módulos en el rep
 
 
 
-# Products App
 
-Este proyecto es una aplicación de microservicios para la gestión de productos. A continuación, se detallan las instrucciones para configurar, construir y ejecutar la aplicación.
-
-## Configuración
-
-Antes de comenzar, asegúrate de completar las variables de entorno necesarias. Puedes usar el archivo `.env.template` como ejemplo para crear tu propio archivo `.env`. Este archivo debe contener las configuraciones específicas para tu entorno, como las credenciales de base de datos, puertos, claves secretas, etc.
-
-### Pasos para configurar las variables de entorno:
-
-1. Copia el archivo `.env.template` y renómbralo como `.env`.
-2. Completa las variables de entorno con los valores correspondientes a tu entorno.
-
-## Construcción y Ejecución
-
-### Construcción con Docker Compose
-
-Para construir la aplicación y todos los servicios necesarios, utiliza el siguiente comando:
-````
- docker compose up --build 
-````
