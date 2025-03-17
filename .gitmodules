@@ -1,3 +1,9 @@
 [submodule "client-geteway"]
 	path = client-geteway
 	url = https://github.com/nest-microservice-gaby/gateWay-microservice.git
+[submodule "products-ms"]
+	path = products-ms
+	url = https://github.com/nest-microservice-gaby/products-microservice.git
+[submodule "orders-ms"]
+	path = orders-ms
+	url = https://github.com/nest-microservice-gaby/orders-microservice.git
