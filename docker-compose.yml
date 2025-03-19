@@ -46,21 +46,21 @@ services:
       - NATS_SERVERS=nats://nats-server:4222
       - DATABASE_URL=postgres://postgres:123456@orders-db:5432/ordersdb?schema=public
   orders-db:
-        container_name: orders-db
-        image: postgres:16.2
-        restart: always
-        ports:
-          - 5432:5432
-        volumes: 
-          - ./orders-ms/postgres:/var/lib/postgresql/data
-        environment:
-          - POSTGRES_USER=postgres
-          - POSTGRES_PASSWORD=123456
-          - POSTGRES_DB=ordersdb
+    container_name: orders-db
+    image: postgres:16.2
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - ./orders-ms/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=ordersdb
 
-############################################
-## PAYMENTS MICROSERVICE
-############################################
+  ############################################
+  ## PAYMENTS MICROSERVICE
+  ############################################
   payments-ms:
     build: ./payments-ms
     container_name: payments-ms
@@ -76,3 +76,18 @@ services:
       - STRIPE_SUCCESS_URL=${STRIPE_SUCCESS_URL}
       - STRIPE_CANCEL_URL=${STRIPE_CANCEL_URL}
       - STRIPE_ENDPOINT_SECRET=${STRIPE_ENDPOINT_SECRET}
+
+  ############################################
+  ## AUTH MICROSERVICE
+  ############################################
+  auth-ms:
+    build: ./auth-ms
+    container_name: auth-ms
+    volumes:
+      - ./auth-ms/src:/usr/src/app/src
+    command: npm run start:dev
+    ports:
+      - ${AUTH_MS_PORT}:${AUTH_MS_PORT}
+    environment:
+      - PORT=${AUTH_MS_PORT}
+      - NATS_SERVERS=nats://nats-server:4222
